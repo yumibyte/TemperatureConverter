@@ -10,6 +10,7 @@ public class GUI implements ActionListener {
     private static JLabel temperatureOutputType;
     private static JLabel temperatureValue;
     private static JLabel temperatureResult;
+    private static JLabel stateResult;
 
     private static JComboBox temperatureInputTypeUser;
     private static JComboBox temperatureOutputTypeUser;
@@ -66,7 +67,9 @@ public class GUI implements ActionListener {
         temperatureResult.setBounds(20, 300, 200, 20);
         panel.add(temperatureResult);
 
-
+        stateResult = new JLabel();
+        stateResult.setBounds(20, 330, 200, 20);
+        panel.add(stateResult);
 
         frame.setVisible(true);
     }
@@ -86,36 +89,53 @@ public class GUI implements ActionListener {
             System.out.println(mainTemperatureOutputType);
         }
 
-        if (mainTemperatureInputType == mainTemperatureOutputType) {        // will not change if the type is the same
-            temperatureResult.setText(mainTemperatureValue + " in " + temperatureTypes[mainTemperatureOutputType]);
+        if (mainTemperatureInputType == mainTemperatureOutputType) {
+            // will not change if the type is the same
+            temperatureResult.setText(Math.round(mainTemperatureValue) + " in " + temperatureTypes[mainTemperatureOutputType]);
         }
         else if (mainTemperatureInputType == 0 && mainTemperatureOutputType == 1) {
             // Celsius to Kelvin
-            temperatureResult.setText(mainTemperatureValue + 273.15 + " in " + temperatureTypes[mainTemperatureOutputType]);
+            temperatureResult.setText(Math.round(mainTemperatureValue + 273.15) + " in " + temperatureTypes[mainTemperatureOutputType]);
         }
         else if (mainTemperatureInputType == 1 && mainTemperatureOutputType == 0) {
             // Kelvin to Celsius
-            temperatureResult.setText(mainTemperatureValue - 273.15 + " in " + temperatureTypes[mainTemperatureOutputType]);
-
+            temperatureResult.setText(Math.round(mainTemperatureValue - 273.15) + " in " + temperatureTypes[mainTemperatureOutputType]);
         }
         else if (mainTemperatureInputType == 1 && mainTemperatureOutputType == 2) {
             // Kelvin to Fahrenheit
-            temperatureResult.setText((mainTemperatureValue * (9/5)) - 459.67 + " in " + temperatureTypes[mainTemperatureOutputType]);
+            temperatureResult.setText(Math.round((mainTemperatureValue * (1.8)) - 459.67) + " in " + temperatureTypes[mainTemperatureOutputType]);
         }
         else if (mainTemperatureInputType == 2 && mainTemperatureOutputType == 1) {
             // Fahrenheit to Kelvin
-            temperatureResult.setText((mainTemperatureValue + 459.67) * (5/9) + " in " + temperatureTypes[mainTemperatureOutputType]);
+            temperatureResult.setText(Math.round((mainTemperatureValue + 459.67) * (0.56)) + " in " + temperatureTypes[mainTemperatureOutputType]);
         }
         else if (mainTemperatureInputType == 0 && mainTemperatureOutputType == 2) {
             // Celsius to Fahrenheit
-            temperatureResult.setText(mainTemperatureValue * (9/5) + 32 + " in " + temperatureTypes[mainTemperatureOutputType]);
+            temperatureResult.setText(Math.round((1.8 * mainTemperatureValue + 32)) + " in " + temperatureTypes[mainTemperatureOutputType]);
         }
         else if (mainTemperatureInputType == 2 && mainTemperatureOutputType == 0) {
             // Fahrenheit to celsius
-            temperatureResult.setText((mainTemperatureValue - 32) * (5/9) + " in " + temperatureTypes[mainTemperatureOutputType]);
+            temperatureResult.setText(Math.round((mainTemperatureValue - 32) * (0.56)) + " in " + temperatureTypes[mainTemperatureOutputType]);
 
         }
 
+        double convertedTemperature;
+        if (mainTemperatureInputType == 1) {
+            convertedTemperature = mainTemperatureValue - 273.15;
+        }
+        else if (mainTemperatureInputType == 2) {
+            convertedTemperature = (mainTemperatureValue - 32) * (0.56);
+        }
+        else {
+            convertedTemperature = mainTemperatureValue;
+        }
 
+        if (convertedTemperature <= 0) {
+            stateResult.setText("The water is freezing");
+        } else if (convertedTemperature < 100) {
+            stateResult.setText("The water is liquid");
+        } else {
+            stateResult.setText("The water is a gas");
+        }
     }
 }

@@ -82,15 +82,26 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="3" />
+          <line>112</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="4" />
+          <line>113</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/GUI.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="mainTemperatureValue * (9/5) + 32" language="JAVA" />
+        <watch expression="mainTemperatureValue * (9/5)" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
