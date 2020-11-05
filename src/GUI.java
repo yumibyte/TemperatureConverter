@@ -8,7 +8,8 @@ public class GUI {
     private static JLabel temperatureResult;
 
     private static JComboBox temperatureInputTypeUser;
-    private static JTextField temperatureOutputTypeUser;
+    private static JComboBox temperatureOutputTypeUser;
+
     private static JTextField temperatureValueUser;
 
     public static void main(String[] args) {
@@ -45,9 +46,9 @@ public class GUI {
         temperatureOutputType.setBounds(20, 200, 200, 20);
         panel.add(temperatureOutputType);
 
-        temperatureInputTypeUser = new JComboBox(temperatureTypes);
-        temperatureInputTypeUser.setBounds(20, 230, 200, 20);
-        panel.add(temperatureInputTypeUser);
+        temperatureOutputTypeUser = new JComboBox(temperatureTypes);
+        temperatureOutputTypeUser.setBounds(20, 230, 200, 20);
+        panel.add(temperatureOutputTypeUser);
 
         // temperature results
         temperatureResult = new JLabel("");
