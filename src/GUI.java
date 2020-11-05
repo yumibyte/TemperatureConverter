@@ -40,11 +40,17 @@ public class GUI {
         temperatureInputTypeUser.setBounds(20, 130, 200, 20);
         panel.add(temperatureInputTypeUser);
 
+        // temperature output type
+        temperatureOutputType = new JLabel("Temperature output type: ");
+        temperatureOutputType.setBounds(20, 200, 200, 20);
+        panel.add(temperatureOutputType);
 
+        temperatureInputTypeUser = new JComboBox(temperatureTypes);
+        temperatureInputTypeUser.setBounds(20, 230, 200, 20);
+        panel.add(temperatureInputTypeUser);
 
-
-
-
+        // temperature results
+        temperatureResult = new JLabel("");
         frame.setVisible(true);
     }
 }
